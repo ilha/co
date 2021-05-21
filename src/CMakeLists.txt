@@ -5,6 +5,12 @@ if(UNIX)
         ${CC_FILES}
         co/context/context.S
     )
+
+    find_package(CURL)
+    if(CURL_FOUND)
+	include_directories(${CURL_INCLUDE_DIRS})
+        target_link_libraries(co ${CURL_LIBRARIES})
+    endif()
 endif()
 
 if(WIN32)
